@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mike Immersed]]></title><description><![CDATA[Adventures in virtual reality and game development]]></description><link>https://www.mikeimmersed.com/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 27 Aug 2018 09:06:45 GMT</lastBuildDate><item><title><![CDATA[GatsbyJS]]></title><description><![CDATA[I decided to check out  GatsbyJS  to statically generate my new site,  mikeimmersed.com . One reason I chose Gatsby over  Jekyll  is that I…]]></description><link>https://www.mikeimmersed.com//blog/gatsbyjs/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/gatsbyjs/</guid><pubDate>Mon, 27 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I decided to check out &lt;a href=&quot;https://www.gatsbyjs.org/&quot;&gt;GatsbyJS&lt;/a&gt; to statically generate my new site, &lt;a href=&quot;https://www.mikeimmersed.com/&quot;&gt;mikeimmersed.com&lt;/a&gt;. One reason I chose Gatsby over &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; is that I already have &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;, but I still haven’t set up &lt;a href=&quot;https://www.ruby-lang.org/&quot;&gt;Ruby&lt;/a&gt; on my current laptop. Also, I figure it might be a good way to get my toes wet with &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; and &lt;a href=&quot;https://graphql.org/&quot;&gt;GraphQL&lt;/a&gt;. Plus, it has several other powerful features that may come in handy later.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mike Immersed]]></title><description><![CDATA[Adventures in virtual reality and game development]]></description><link>https://www.mikeimmersed.com/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 29 Aug 2018 06:41:31 GMT</lastBuildDate><item><title><![CDATA[Rift in Unity Part 1: Enable VR Support]]></title><description><![CDATA[As I’m developing a VR game in  Unity  for the Progressive Game Jam at  Square One Clubs , I want to share some of the things I’m learning…]]></description><link>https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</guid><pubDate>Tue, 28 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;As I’m developing a VR game in &lt;a href=&quot;https://unity3d.com/&quot;&gt;Unity&lt;/a&gt; for the Progressive Game Jam at &lt;a href=&quot;http://www.squareoneclubs.com/&quot;&gt;Square One Clubs&lt;/a&gt;, I want to share some of the things I’m learning along the way. For now, I’ll be focusing on &lt;a href=&quot;https://www.oculus.com/rift/&quot;&gt;Oculus Rift&lt;/a&gt; support. But I plan to add support and info for other headsets later.&lt;/p&gt;
+&lt;p&gt;If you want to follow along, you’ll need Oculus Rift + Touch and a computer that meets the Rift system requirements.&lt;/p&gt;
+&lt;h2&gt;Let’s get started&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://unity3d.com/get-unity&quot;&gt;Install or update&lt;/a&gt; to the latest version of Unity. I’m using Unity 2018.2.5f1.&lt;/p&gt;
+&lt;p&gt;Run Unity and at the start up screen click &lt;em&gt;New&lt;/em&gt; to create a new project. Give it a name such as “Welcome to VR”, select the &lt;em&gt;3D&lt;/em&gt; template, select a location, and click &lt;em&gt;Create project&lt;/em&gt;. It may take a few minutes for Unity to set up your new project.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-669ef.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 58.146964856230035%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAC4jAAAuIwF4pT92AAABP0lEQVQoz5WSTW6DMBCFuf++q56iB6gUqeq+iypq1FVTGtqAbQzm18DrjBMTSoJEkR62xp5vnscOqqpG21r0A9DTr1uhfi7OHQbEqkZg25aCHamHtRZrvm4YHIDzOKeqKooOSI1FYIxxAVZZlm5DS0WuZce1umlOqmuXk+c5xRscVYkgzzJkJK31qDRN/2ge014Uz875zNkfJIIs0yNQSunmXNW79s4ZVBSFc8UxP/pcB4wc8OKQk24BGbRU6CbQW+eRKzfUn6lKSlZKIfqOnHg+b9Mi0DueipseRRHiOEaSJBDUmlhICALrJYdT6FweKIRwc5Mq1FLA5qfL+LdDjnMfY3L3vNng4XWHu/cD7nef+JIK5rzvCrgE8+t81LftFi8fIR7DI57CHySpvjybNcAp2N00P5nCoDM5LGl+5F/3w5n0FNvwLwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Unity new project&quot;
+        title=&quot;&quot;
+        src=&quot;/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-fb8a0.png&quot;
+        srcset=&quot;/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-1a291.png 148w,
+/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-2bc4a.png 295w,
+/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-fb8a0.png 590w,
+/static/unity-new-project-1f1437de72e10a8532f825a7300aac38-669ef.png 626w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Enable VR support&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the Edit menu &gt; Project Settings &gt; Player&lt;/li&gt;
+&lt;li&gt;Under the Inspector &gt; expand XR Settings &gt; check Virtual Reality Supported&lt;/li&gt;
+&lt;li&gt;make sure Oculus is included under Virtual Reality SDKs&lt;/li&gt;
+&lt;li&gt;if not, click the &lt;em&gt;+&lt;/em&gt; and add Oculus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-231d5.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 81.20805369127517%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAC4jAAAuIwF4pT92AAADi0lEQVQ4y12U228TVxDG96/rW9Wb1BZVoqIPVR9oGyUpqFVogyCopUqpgKQUAQIVWshFxcQ4vu/V67W9vuHEl5gkxMGxvbu+rB0aCkFf55zgVO3Dp5kje39nvpnZFR7XWtixOmhZNslBu9OFZTvodF303F103T5cd0B5H3/tPcfL/Vf4+8VLrr3nLw7zV/v72Lb6EMx0Fk2C2bYFx3HoYZdHXZXx8IEHXpJhxKEoMvx+P0KhEHw+Hz/HdR2RcBhhplAQ3uUwhGT5KRy7xUH9fp9H22rBr2VxJxCDJ6LTn8MIBoMQRZFAKqLRKERJRS6fRzKZ5DIMA4GwAiFRraHVbKLX63FYt9tFo9FA1CzgjjeABTGFaCSCQCAAWZahaRpXJBLll6iqihhVahg6ZC0B4ersZW6RgViFjm3TuY0L58/hs6Mf4fSpCaiKQpUpHDhUhC5hkiSJX7C4uIDZK9ch/DpzGZZlUQ/tA8tU6WAwwPT3U/j4w3fx7ddf/Qc2zLltagHLY7EY7t27i1+u3mDAS9wygzJgjwN3CXiWgO8cAv9fIRsEGxADM9sL83O4duM3CFdmLqLZbKFW26YqHVoPl3rZx08/TOHYkfcw+c0J/sAQOgQnEglkMhk+DJZrmgpR1lkPL8FuNeBYTTwbuBi4XVIP5yYn8P6bb+DkyPFDaywOlUqlUCqVUCwWUSgUKK7CzK5AmJ6+gPRmG8m1Jgr1AWkXxeYePB4Prs1exP3FOZTLZQ5gk2aTXVpa4n1Lp9PI5XJ8fdYqFWQelSD4/EGUNuvIlzewRm/Nxo6D9boDq92D06F+PtuDSz3V9fjrPVRosjKSzLJJVRZXsLmxjicbVeQLRQiTM8s4+eM8xqZuY5w0euYW6Sb8qXUYjx2ktwYwt/qQaMdkiazzPsrQjSREzYRq5KCbq0gXqjAyZQizgRp+9m7i/GIFZ3/P47ubKUxcN7BSeYL609rh22OaJt85VqGqSJD1NOaCWcyHcrgvrsIjl/BALJDleAZeLYk/xTj9qOEPv4zbPhG1egOddpt/FIbAfy1LdE6hTHZLqwUeq5UisnkayqdHj+AT2rcDvc3jsQ/eghQJUZ8MZNIpehV3OIBZZeuhqgoNJIP8o1UaCEHLVWzXtrBSrEIYHx3F2MjnGB/5gmvstU6MjWD0y+M4c3oSbHA+f4DH5cBBHgxHEZVjiEgal6JqeBiS8Q8xCBzeFa1eOwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Unity VR support&quot;
+        title=&quot;&quot;
+        src=&quot;/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-fb8a0.png&quot;
+        srcset=&quot;/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-1a291.png 148w,
+/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-2bc4a.png 295w,
+/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-fb8a0.png 590w,
+/static/unity-vr-support-5f0ccced16c700c61c5bc2a14f8393a3-231d5.png 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Try it out&lt;/h2&gt;
+&lt;p&gt;We don’t have anything to look at, so first let’s add a cube to the scene&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;from Hierarchy, click Create &gt; 3D Object &gt; Cube&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Position the cube in front of the Main Camera&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I set the cube’s Position to 0,0,-7 via the Inspector&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, make sure your Rift and sensors are connected and set up and open the Oculus application.&lt;/p&gt;
+&lt;p&gt;Go back to Unity, click the Play button (▶), put on your Rift and look around!&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-ab5af.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.645833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAC4jAAAuIwF4pT92AAACZElEQVQoz12S/U/TQBjH+x8iGmDQrVvLtnZjyCCLimw4RINKCKBE4AdxBBJ18S1MURlRNMi2voxtoPElKjEBMjEBh/K69evdAQnskk+vbe4++d7zHKdqGlRVg6brMIw0m3XdwHwmg2w2C1VLQ0/nkEokkJidRfL9LNTEHAw1iYyhIZcxDpjXkUlr4MLBi+gItSFMaG9rZYRDQUIIVzo7cfP2IKLPJzGtqpjJLuKlmsPD1ymMTrzFcHQKQ/enMDD+An2RGHrvPAbnttfCba87hIfsoFghizaIvAWyZEegxY/rPT0Ye/IU8cwCjPwGsgUTybUSXn0tIKqtYuTNdwxPfgDnqRfgLYP+80g29HVfw+VgK3wuEbaqSvBnKqCIAgLNTejp78W9ZzHMLH6EvroG/dcm3n3Lg1NEKzzHoEKJr0JvdxfoMM0SVleWkZ03MHSrD5K1BookwGmthdNWB5/sQvuldgyPjuJRPE6FPBEdIvFocAoQqisQn44z4VaxBBMHo2iauHG1g4gsaHA54HXayR4BboFn8kYi5xSJiqwncAkWGKTD+0RS2CviL5Fu7Owy6fhYBA7L6UOZjUHfKX6vXJ6QNIM0ye9xYmklj20mLGFz38S/ErC+tYPg+RZy3GpSGhsrES2ZQqSUJg9J6Dkm9BIhXRw810w27+HPTpGxQaD5Fj59ZunLT0Sh4ibFSRI66nAEFYqWSgwO9LO6bZPHFklW2C2hSL6j0Qdw1Jxi6ejJyjmr1IPzkeIe0egW2eLQhQAid0cwEYthLqXhy4+fWP69jq7OMOi9bZQldpV87pM0+2T8B6tAV5AzNq5CAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Unity play&quot;
+        title=&quot;&quot;
+        src=&quot;/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-fb8a0.png&quot;
+        srcset=&quot;/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-1a291.png 148w,
+/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-2bc4a.png 295w,
+/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-fb8a0.png 590w,
+/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-526de.png 885w,
+/static/unity-play-cb9af7b6fc3fce663d430e66f8ab4be7-ab5af.png 960w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;Congratulations, you just made a simple VR scene in Unity!&lt;/p&gt;
+&lt;p&gt;Stay tuned, next time we will add basic support to move around the scene&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.unity3d.com/Manual/VROverview.html&quot;&gt;Unity User Manual: VR overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[GatsbyJS]]></title><description><![CDATA[I decided to check out  GatsbyJS  to statically generate my new site,  mikeimmersed.com . One reason I chose Gatsby over  Jekyll  is that I…]]></description><link>https://www.mikeimmersed.com//blog/gatsbyjs/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/gatsbyjs/</guid><pubDate>Mon, 27 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I decided to check out &lt;a href=&quot;https://www.gatsbyjs.org/&quot;&gt;GatsbyJS&lt;/a&gt; to statically generate my new site, &lt;a href=&quot;https://www.mikeimmersed.com/&quot;&gt;mikeimmersed.com&lt;/a&gt;. One reason I chose Gatsby over &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; is that I already have &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;, but I still haven’t set up &lt;a href=&quot;https://www.ruby-lang.org/&quot;&gt;Ruby&lt;/a&gt; on my current laptop. Also, I figure it might be a good way to get my toes wet with &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; and &lt;a href=&quot;https://graphql.org/&quot;&gt;GraphQL&lt;/a&gt;. Plus, it has several other powerful features that may come in handy later.&lt;/p&gt;
 &lt;h2&gt;Quick start&lt;/h2&gt;
 &lt;p&gt;Here are the steps I used to get started with Gatsby:&lt;/p&gt;
 &lt;ul&gt;

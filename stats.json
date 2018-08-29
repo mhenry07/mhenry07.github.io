@@ -1,8 +1,8 @@
 {
   "assetsByChunkName": {
     "path---blog-gatsbyjs": [
-      "path---blog-gatsbyjs-07459154856f52b6d886.js",
-      "path---blog-gatsbyjs-07459154856f52b6d886.js.map"
+      "path---blog-gatsbyjs-1ba32ffc2618bf6b7956.js",
+      "path---blog-gatsbyjs-1ba32ffc2618bf6b7956.js.map"
     ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-46a6f4cf5eba43da4ef4.js",
@@ -21,12 +21,12 @@
       "component---src-templates-blog-post-js-2710812dd2fbd4b79175.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-646ef2118f316ddaaf68.js",
-      "component---src-layouts-index-js-646ef2118f316ddaaf68.js.map"
+      "component---src-layouts-index-js-fa87728672be92714955.js",
+      "component---src-layouts-index-js-fa87728672be92714955.js.map"
     ],
     "path---index": [
-      "path---index-f42a1f466be9ef15b496.js",
-      "path---index-f42a1f466be9ef15b496.js.map"
+      "path---index-bd91966576d7a95bd6c0.js",
+      "path---index-bd91966576d7a95bd6c0.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
@@ -47,18 +47,22 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-424b679aa600cd5d62d2.js",
+      "app-3d2ecc89e795140dd58b.js",
       "build-js-styles.css",
-      "app-424b679aa600cd5d62d2.js.map",
+      "app-3d2ecc89e795140dd58b.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---blog-rift-in-unity-1-enable-vr-support": [
+      "path---blog-rift-in-unity-1-enable-vr-support-9e80e03c0e062995f3c1.js",
+      "path---blog-rift-in-unity-1-enable-vr-support-9e80e03c0e062995f3c1.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---blog-welcome-to-2018": [
-      "path---blog-welcome-to-2018-5aec4ffa22a88568b1d6.js",
-      "path---blog-welcome-to-2018-5aec4ffa22a88568b1d6.js.map"
+      "path---blog-welcome-to-2018-e0e1a904bc9787ee0e5b.js",
+      "path---blog-welcome-to-2018-e0e1a904bc9787ee0e5b.js.map"
     ]
   }
 }
