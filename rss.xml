@@ -1,4 +1,360 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mike Immersed]]></title><description><![CDATA[Adventures in virtual reality and game development]]></description><link>https://www.mikeimmersed.com/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 29 Aug 2018 06:41:31 GMT</lastBuildDate><item><title><![CDATA[Rift in Unity Part 1: Enable VR Support]]></title><description><![CDATA[As I’m developing a VR game in  Unity  for the Progressive Game Jam at  Square One Clubs , I want to share some of the things I’m learning…]]></description><link>https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</guid><pubDate>Tue, 28 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;As I’m developing a VR game in &lt;a href=&quot;https://unity3d.com/&quot;&gt;Unity&lt;/a&gt; for the Progressive Game Jam at &lt;a href=&quot;http://www.squareoneclubs.com/&quot;&gt;Square One Clubs&lt;/a&gt;, I want to share some of the things I’m learning along the way. For now, I’ll be focusing on &lt;a href=&quot;https://www.oculus.com/rift/&quot;&gt;Oculus Rift&lt;/a&gt; support. But I plan to add support and info for other headsets later.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Mike Immersed]]></title><description><![CDATA[Adventures in virtual reality and game development]]></description><link>https://www.mikeimmersed.com/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 16 Sep 2018 08:09:29 GMT</lastBuildDate><item><title><![CDATA[Rift in Unity Part 2: See Your Hands in VR]]></title><description><![CDATA[As I’m developing a VR game in  Unity  for the Progressive Game Jam at  Square One Clubs , I want to share some of the things I’m learning…]]></description><link>https://www.mikeimmersed.com//blog/rift-in-unity-2-see-your-hands-in-vr/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/rift-in-unity-2-see-your-hands-in-vr/</guid><pubDate>Sun, 16 Sep 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;As I’m developing a VR game in &lt;a href=&quot;https://unity3d.com/&quot;&gt;Unity&lt;/a&gt; for the Progressive Game Jam at &lt;a href=&quot;http://www.squareoneclubs.com/&quot;&gt;Square One Clubs&lt;/a&gt;, I want to share some of the things I’m learning along the way. For now, I’ll be focusing on &lt;a href=&quot;https://www.oculus.com/rift&quot;&gt;Oculus Rift&lt;/a&gt; support. But I plan to add support and info for other headsets later.&lt;/p&gt;
+&lt;p&gt;If you want to follow along, you’ll need Oculus Rift + Touch and a computer that meets the Rift system requirements. I’m using Unity 2018.2.8f1.&lt;/p&gt;
+&lt;p&gt;If you haven’t yet added VR support, follow &lt;a href=&quot;/blog/rift-in-unity-1-enable-vr-support&quot;&gt;Part 1&lt;/a&gt; to do so now.&lt;/p&gt;
+&lt;h2&gt;Add the Oculus SDK&lt;/h2&gt;
+&lt;p&gt;In Part 1 we were able to see our scene in VR. But if you tried looking at your hands, they were invisible. Let’s add support for our nifty Touch controllers so we can see our hands and navigate around the scene. To do so, we will need to add additional Oculus assets to the project.&lt;/p&gt;
+&lt;h3&gt;The easy way&lt;/h3&gt;
+&lt;p&gt;The easiest way to add Oculus controller support to a Unity project is to install &lt;a href=&quot;https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022&quot;&gt;Oculus Integration&lt;/a&gt; from the Unity Asset Store. It just got updated to v1.29. However, sometimes it lags behind the official Oculus SDKs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;in your Unity project, open the Asset Store via &lt;code class=&quot;language-text&quot;&gt;Ctrl+9&lt;/code&gt; or Window &gt; General &gt; Asset Store&lt;/li&gt;
+&lt;li&gt;in the search bar type “Oculus Integration”&lt;/li&gt;
+&lt;li&gt;select Oculus Integration by Oculus in the search results&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;download (or update) Oculus Integration if necessary&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;click &lt;em&gt;Download&lt;/em&gt; (you may have to scroll down)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;click &lt;em&gt;Import&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;leave all items selected and click &lt;em&gt;Import&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;if prompted, click &lt;em&gt;I made a backup, go ahead&lt;/em&gt; (back up your project first if necessary)&lt;/li&gt;
+&lt;li&gt;if prompted to update the Oculus Utilities Plugin, click &lt;em&gt;Yes&lt;/em&gt; and click &lt;em&gt;Restart&lt;/em&gt; to restart Unity&lt;/li&gt;
+&lt;li&gt;you should now see an Oculus folder under Assets in the Project pane&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/01-project-assets-oculus-3d7b64336c444c1b383f077984b7e4bb-5d183.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 293px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 135.49488054607508%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAYAAAB836/YAAAACXBIWXMAABJ0AAASdAHeZh94AAADrklEQVRIx6VVO2/bVhjlT0qnNk2XbN2apejQJf8hQIE8gRQNkCZO0tiOHSmW9aYkiqRES6JkSSQlUhL1cGwDhmHXRsaiKZqiS/fT77sVBaqS4yHD4X3y3PO97pU8z0OlUoFt2+h2u2i1WhiNRjg5OcHp6SmazSbi8TjS6TRSqdQcksmkQCQSQSwWE3PS0dERxuMxjo+PcXh4CN/3cX5+LgjPzs7gOA5kWUahUJghn89DURTUajUhJpFIiLlisQjJ9XrodF1aNGGadRwQ6WSyh7Zlk9Ix9t7uY3//YB4HtGfvLQYDH0pRhWU7dEARvV4f0m69ioa5A7NqoF4tU99AbUdH126i7znouTbBmrb23NjttOE6LQGP+larAUnWmniyqeD+0y2svJLx47M4Hq7EEEnXoDVGUE1/Dlp9OAe9Me3TXt10IX3z0ztcufUbrt/ycfOBghuP3+P79X/w7fO/8fWjv/DlvQ/46sEHXLv/H7648wc+v/1+Dlfv/I7PfvgT3z3+FVJKd5He2UNCdRDZzmLlTRkRuYVYwcJasoGn0QpebNexmmzil3gDidKQ9k+QMsZIh5AyJpANDxL7auJ3yV82zFoF6xtrUBUZJTUPrZCBoeWwUyqgrMrQlAx8z8Jo0MGo78wwJIxpzu20IDVb5Fi3B4uiWiqXsboZRUFRRdSSyRTMegMDfwiPItjrD0RGLEPX9dBuW5A4kTm5ObHLhoGXG5uUCkUUKc+UKYKkD+C67qwN9y0rROgwoVD4Glk5R8mcRS6XEwm7u7sr9oRJwlhKaIcI5VxeVISqqgKmac5+XEZ6sUIyeXXjtTCZ1TGy2awwm0kvUnmpQk3XRV1mMhlRp0zM6//33eWErJAIVU0ThNVqdXYBdDqdObOXBWiB0JgSskLu9wcD9PuULr3eAtEyYkHIn3a7LQKxFokKM9lnQUD46uIrbBAi55bBc8FhSxWqpOzZqwiyRK6T2Rxp9h8T8yHsY1au0RrP6bSf3RL4UhCyOh7wSVwtdx89QUamstNUEeFAJd/YPA4OYR/zGh/CguYU8sDzXGH6zy/XkS8oMGgj/8A/Mhm3TMYtX/X8NAyHw0WT2VSbOnqphI2t2MyHbA5HN/BTGOF0WQiKSWnBZFvxBDbpsWE1TMqPD5vG6fKxyC4Q1qkC8nSzRGPbKJEqNod9FY1GFxJ6GcnStGGz/Gla8KvH4wAXVcdHK4UHgWnchnFZQi8o5MgGYf8UMIcg5PCzEq6GTwFzsLX/Ai5XnsMJx5b0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Oculus Assets&quot;
+        title=&quot;&quot;
+        src=&quot;/static/01-project-assets-oculus-3d7b64336c444c1b383f077984b7e4bb-5d183.png&quot;
+        srcset=&quot;/static/01-project-assets-oculus-3d7b64336c444c1b383f077984b7e4bb-d6b96.png 148w,
+/static/01-project-assets-oculus-3d7b64336c444c1b383f077984b7e4bb-5d183.png 293w&quot;
+        sizes=&quot;(max-width: 293px) 100vw, 293px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;The latest and greatest&lt;/h3&gt;
+&lt;p&gt;But, if the Oculus Integration package isn’t up to date and you want the latest version, the Oculus SDKs can be downloaded directly from &lt;a href=&quot;https://developer.oculus.com/downloads/&quot;&gt;Oculus Developer Downloads&lt;/a&gt; and imported into Unity. There are three main packages for our purposes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/downloads/package/oculus-platform-sdk/&quot;&gt;Oculus Platform SDK&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/downloads/package/oculus-utilities-for-unity-5/&quot;&gt;Oculus Utilities for Unity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/downloads/package/oculus-avatar-sdk/&quot;&gt;Oculus Avatar SDK&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Add a player controller&lt;/h2&gt;
+&lt;p&gt;Now that we’ve added additional Oculus support, let’s add Oculus’ player controller to the scene. This will replace Unity’s camera and will enable basic navigation.&lt;/p&gt;
+&lt;p&gt;In the Project pane, expand Assets &gt; Oculus &gt; VR &gt; Prefabs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;drag OVRPlayerController into the scene &lt;br&gt; 
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/02-OVRPlayerController-prefab-c5113943ceb4f2c878101f2a8e7c6ab6-f95d0.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 353px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 134.8441926345609%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAbCAYAAAB836/YAAAACXBIWXMAABJ0AAASdAHeZh94AAAD1ElEQVRIx51Vy27bVhTUF7ZdtPCiiwJ9Iqvu0wJF60X9qJs4QZLWkkmJEsWnZMmiRFlvPvUwXNWSbSBO2iBfMj3nSjQcW27jLg5IkLxzZ+bMPUx5nodOp4MgCNDtdjEajXB5eYn5fA5N0yBJErLZLGRZXlm5XA6ZTAbpdFpcU9PpFCcnJxgOh5hMJri4uMDp6akAbLfbqNfraDQaK8t1XUGmXC6LzQ8PD5HiB61WC5VKBf1+/4ppGIYYj8dik7uK3/OaZrMpqnV0hFStVoOs5KHSDjmSxrQdxxHAvV5PLEhqMBi8U/yMLfN9Hz59rxsmUsyGqf6W2YdSKMAyTZiWJT6O4xhRFIkSi1YUA4aBj3qzgx93sgvJLO+AJDNT3TBg2zYsAjUJnP2xlhskADcrDAM4bhsPN/YXgPxht9vB3r6EXD4PmwBUVQXbwfJZQSLtSuJ1hkvA7zalBSD7dUSmZuQsirqBUqkEg/xgO1guK1gFdhvwGkOOSFqSkVUUwY5jUK1W35F5P4bU8jQxzKtF6LpGDA3hH3f6LnZ3MyRAziJLZg+508ywQF1nH3nDewEGS8A9klzUddFVhaQzIAf2fwGy5N8pixxw5xorDvBNH9+rKfyCsyjlFBQJlDvNxzEJ9f08XL5sk2wG3Of4FItCOnf6Ost7MUwaw4AaAfJJ4VNzV2T+kyGHW6JmyMSSwTg67G3i56o8rszhFSBnkcNNQ1NfxoZZM+BNVrcZdm4Ddjpt8jCHbJGiY5eQzytiwPK7ZHz9G8Pvb3ro0TXyB0i7EbIHLqplW4wyx6nT6eF82iunzSJeHqJ4nAAGGAhACnjTxfNqH9lyAyXLIKa2AONjyJ2v1RxaGJMN4aLE4AhEnZ+dIeX12xhFHuJwIGoc9pFp+FAqDVQsTYAaugrToDNezMOke8vUcFAyUSnTvLR1tJsORrEv/kWpL389xyebb7G29QZr22/x8foF1nan+Gz3HA+evsGDZ3/hq93X+Prp3/j88St8QfXNk1f4dOslPlx/iY9+usAH66/x7YtLzGYzpB6pY2ypM2yrf1KdYkM5wWM9xsP8FD/Ix9hRhtjJD/GzFGFDjrGZG+EXevZIm2K7OMeONsdmYYYX9h8LhsGgheNhH5OYq4fJ0MNsNIDU9CGXKqhZBdgGla6gbJF0LYdqSUfktXHMa6KeWDeOBzhjDztdmndkLjfE80Oaf324/RB71R7UskNelUSEeIKbpgWNJrrr0gQKI+pusFy3KJ7wKR5PfMPd5qvr1PC83IJiV3FADSlquugudzrpNg/d5Hu+Jvd8uv4BOTKam1DNDLMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;OVRPlayerController prefab&quot;
+        title=&quot;&quot;
+        src=&quot;/static/02-OVRPlayerController-prefab-c5113943ceb4f2c878101f2a8e7c6ab6-f95d0.png&quot;
+        srcset=&quot;/static/02-OVRPlayerController-prefab-c5113943ceb4f2c878101f2a8e7c6ab6-73411.png 148w,
+/static/02-OVRPlayerController-prefab-c5113943ceb4f2c878101f2a8e7c6ab6-fad1d.png 295w,
+/static/02-OVRPlayerController-prefab-c5113943ceb4f2c878101f2a8e7c6ab6-f95d0.png 353w&quot;
+        sizes=&quot;(max-width: 353px) 100vw, 353px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;in the Hierarchy pane, expand the OVRPlayerController and select OVRCameraRig&lt;/li&gt;
+&lt;li&gt;in the Inspector pane, change Tracking Origin Type to Floor Level &lt;br&gt; 
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-ccb9b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 86.25592417061611%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAACn0lEQVQ4y2VU2XKkMAyc//+IrdrdJDAMYMDcl7lnmOSfeiUBWZI8dLkwdqsltXzpug7D0KNpahR5jrIsURTFJ9I0pb0CdV1Da40wDAVBEHxZresNlmXhkmU53mwPfhBjua/4eH/H+wnrusqlOI4p8IBxHGGMkX1eH4+HrAPtL8uCi+8rvNoBfv1VsB0PSvnw/f9gMh0nCCNNahMhTpJUSBgcoO8pw9bAUxoX07Yoqxa2VyCMKznUdWZfO1ljIvQ8n+BJelVVCckBVs5nHS/ChetX1R1enBxuWMnPM/hCkubwVSA1jKJI6tw0jZAcpFXdwHIULqKi65GXrNTsEfuTggExESmlhJDVcXqHsi3ogPsyQ0XZRrgVm8AH+v5HOqzKdV3peJZlpK79cqYj8H0vSDZCjtB/S/UMboxtX0Ulp5vnm6VysplYi4Jw3ZXOqSl7pwwRt9Sg7+D/WkdEqqg5WtJnTy6UYkt1nOdJPLwsE4KYCBu6dHgr2VM6UkuSBFEYIIgKOH4JnQ5U/BFpbpAVA4lY0Q1PmP6JcfqAo0pcWiJyPU/SORf6QE31Yg9yl32fDZ5CJwXVbdhLNco6TRO8MGPbDBStxG/LQbJPw1HsiZR7pO7m+mJ4NrVkkJc/rDXPI/wo3Wq4ELuT1nBJRb93XQinETeVwXHZ1K5kwYTtbvoDzMHnXRUTIW1M3PKswdvVkfHqd0ImLmtDNYxJpSc+5P+8ymyLXUZSt4iXrVuw2WYmhdekwp+XV1yvtowYK2HClYafm8Qjx3tMpuOMPMtEszwIjOf62IzNUSId0xz68nyZUzqscrnfqSmRPBTiO/JhRbY5UmWwvfq+21LmS2+2DcdxPp+nc8H5m83M3uNOPp9PmSgmYoUPCmjM9qYGOsM/F8c68UqQoxIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Floor Level tracking origin&quot;
+        title=&quot;&quot;
+        src=&quot;/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-fb8a0.png&quot;
+        srcset=&quot;/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-1a291.png 148w,
+/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-2bc4a.png 295w,
+/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-fb8a0.png 590w,
+/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-526de.png 885w,
+/static/03-floor-level-tracking-origin-19a9469f615cb6b24524d14549d35d57-ccb9b.png 1055w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/li&gt;
+&lt;li&gt;this is based on the floor position from the Rift Configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;delete the Main Camera&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Add controller support&lt;/h2&gt;
+&lt;p&gt;Now, we can add an avatar for our player. We will use Oculus’ LocalAvatar prefab to see only our hands. The RemoteAvatar prefab is intended for seeing other visitors’ avatars.&lt;/p&gt;
+&lt;p&gt;In the Project pane, expand Assets &gt; Oculus &gt; Avatar &gt; Content &gt; Prefabs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;drag the LocalAvatar prefab into the scene as a child of TrackingSpace (under OVRPlayerController &gt; OVRCameraRig) &lt;br&gt; 
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/04-LocalAvatar-prefab-116c5f222f030f5cc6bdb086b8982e6a-84f13.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 379px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 125.59366754617416%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAABJ0AAASdAHeZh94AAADMklEQVQ4y41VaU8iURDkb2+y+2k32cRN9mB1gIEBlGtuDrlvhkMSozFK4s+p7XrDrKOC+qHyBN6r7q7qbhPj8RiDwQBBEIB/397e4vHxEaPRCIZh4Pz8HMVi8SjK5TIuLi6Qy+VQKBSQuLm5wfbqCuv1GtfX17i7u4P6brvFcDhUQY6BQafTKZrNJlzXRbfbRaLf76PZaqFer6sLvV4P8/lcBbiSQO+Bd8kxkuD9nhC2220YxXMY+bwqgSUyM0owm83Ug7ewWCywXC7l7hzFkoUEHzFCNl9AzbTgeZ4CLxIkfgshYYBOf4TPJ6IhtVitVri8vIQupKZloVaroVKpwDRNlEolJQOziIK8xGpP+IWEk8lECJeKMJ0z4Ii4lpA2Gg1FwrKiTA5l/Izwx54w+tHzfWQLRfhyktS2beVinPBDGTKTiNR2XOhGXpVNQsdxlEmU5aCGAlbY7Y9DQmrIKDSHJ7NMaik4toWCuF6tVsGg/P2Q63Q3CBZod4chYSaTgaZpSKVSgjT+Jv/g68lPfDNs5HNZlGQSynvouh67G0JTp4bkWVoI80jQDHZ4HD1BuTXEmd2BVatK2a4q++U9otPpSBd04fhNfPpuhH3IqaBGxFKwXa/Qma2Q9MdwLRN1cXyz2YS/i97R3fDzCht5PxxP8StjhhrGXZzTNdGkOQmQ9EbwHVsa3UdLxpMZkfiQ09Rxt3t4apuox3iul0I4DnBan6Dpu+K8oxqdDc7+jL9ZxN7e398fIZRoLcnwr2ToidvUkNuErcQsD2f4AcIzybDhhRlyDDnjnPuoL590XH6M8FRMqXsOLGlwzjTL5TZitiTmpuJJ0NyHhxcahgiwkVFqTwP89ifKlHK5ohrc3hNHfckNzc/Rytvtdq8zDOSczheoDpbQnbZk6Coy6kdwFLmMCc48we/I8yrDQLQYj4awm22kvT58MSTSjmueD6NtTu2e9a+8faUhN4sjj3VZY3XXQUNIqBvLYf+R4NjGOWhKS8ZQ07NKs1rN/O+mavjYyj9GqDRkVpHtdE3L6GoXEpyO+Gp7D/ynlWAWtHwqmXJmU9mc0o0u8iQ4ngz8FlgpNf4Hs8Qkd6eQZAgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;LocalAvatar prefab&quot;
+        title=&quot;&quot;
+        src=&quot;/static/04-LocalAvatar-prefab-116c5f222f030f5cc6bdb086b8982e6a-84f13.png&quot;
+        srcset=&quot;/static/04-LocalAvatar-prefab-116c5f222f030f5cc6bdb086b8982e6a-2ca69.png 148w,
+/static/04-LocalAvatar-prefab-116c5f222f030f5cc6bdb086b8982e6a-e6bfa.png 295w,
+/static/04-LocalAvatar-prefab-116c5f222f030f5cc6bdb086b8982e6a-84f13.png 379w&quot;
+        sizes=&quot;(max-width: 379px) 100vw, 379px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+     
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/05-TrackingSpace-LocalAvatar-4a7d0ea75466850a6509c90b126610c3-cf78f.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 377px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 115.91511936339522%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABJ0AAASdAHeZh94AAACqElEQVQ4y6WVXW8SQRSG9x82tpqYqPHSH6KxWmvSu96gpR/Ash+wC7Ts9zcoUEpTU+mdLX/k9Zxp2BTaVawXD2d2duad95yZHaThcIh+v48kSRDHsYjT6RRRFKFUKmF/fx/lcrkQfs/jdnd3RVsaj8cYDAZCaDKZoNfriQW4z3Ec2LYNy7IK4fedTgemaYpniV3pug5VVeH7fi7AC7DwxcUP4fhPXF1d4fLyUoyXsiyD67pQ6jJq1QrkWhWqUoeuqZDlGkajAc7PJ+BMzs7ORFyG+0ejkSiZxK6CIIDebENWDIHWaEEnarIGs0NpOwFiqmlUQBiGQox1hCA7PO4GUA0PNZ3cNl3R1kwfFdVG68RHlqU0KRGlKCIX5LQ5Nlok1HQg63YeNdMlB/HCKVhm3p8LpmkKizajYZKQ4UBpONBJ6EixxCJpujhxWfie4PwF73D7hNO2UdNsVFULVYrHXf/e5L8Kcic7jSgqlG6FxDhy6nVy3LWDfNxKDuedfhCJNOsN+7aGVAKG264XIl015VuHCTw/Eu443bkgR6PtPc5hGNGXQw5ZhDdGNVwSdeGQu9txDzHPjgQDscu8Ejkk+KDOXSlNW6TOmB0vH/cQ/E44dD2fNiIVzng1x4txULdxRAe6qjk4VGxxuLndtemLSHhsQnPuIJ5TKhcJvt6e4snmDM+2iI83WH87xfOtG7z6PMOL7RleUtzYvMbau19Yp7jx4Ya4XuApsfZ+hjc7PyGVGz3sGafYKXv4VOrii/4NlfYYR+1THLZORSwbo5y9Ar6SxqHRg5RGLob9CElgIXSP8b0X3mNwl/4DUD9rZLEHyaMaxpQ/1yZJs8Xa/AOs4ftLx+buGSu6CFa6HJYFH0MuyD/8Da/qpgjWEIL8R8Q3Lj/8D6zBF/Vv4K+7aJR20TsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;LocalAvatar child of TrackingSpace&quot;
+        title=&quot;&quot;
+        src=&quot;/static/05-TrackingSpace-LocalAvatar-4a7d0ea75466850a6509c90b126610c3-cf78f.png&quot;
+        srcset=&quot;/static/05-TrackingSpace-LocalAvatar-4a7d0ea75466850a6509c90b126610c3-c9718.png 148w,
+/static/05-TrackingSpace-LocalAvatar-4a7d0ea75466850a6509c90b126610c3-a2066.png 295w,
+/static/05-TrackingSpace-LocalAvatar-4a7d0ea75466850a6509c90b126610c3-cf78f.png 377w&quot;
+        sizes=&quot;(max-width: 377px) 100vw, 377px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it’s important to place it as a child of TrackingSpace so that hands will move properly with the player, head, and hand movements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Add a ground plane to prevent the player from falling and use a cube for reference&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;add a Plane 3D Object to act as the ground so you don’t fall infinitely &lt;br&gt; 
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-ef9ea.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.645833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACcklEQVQoz21SS1PaUBjN3+ymM3130alddNVFay0qgShatD5adOqIqDiCkQQIgSQ8BF91UYESHlppF67sWKsNEU7vvch0Y2bOnHvPd++Z8918XK1Wg2maoFytVlEslXBYLBKtinqjgaPjYzSbTdTrdVavkrPlchlmxWR7qvfumpUKuHGvFzzPY3TEjQnve0xPfcDszDQmJ7zweEbAO4fBu9wQPKNYWPJDFDchyzISiQRiMRkq4WQyCUVRiKaCW/7sQ0xcx5au4vBgF82GidOf31ErH+LLdg66EoUYDMD/aRprK8sIR5KQ4zry+TwMIw1JkpFKpaBpOtLpNDjc8tlt6zYZP45rkOQ4xEgCW1kDKS2F0IYIKRKBqia7Ce3ra7RaLdgUtg378gJnZ+f4dX6JdpvULAuW1WKGxW9HmFvLYFHcRkDaRVDKIBReRzweZwlTmgauQw4ydLqMG253/mudTjdho96AouqIKSlIURUROUbeUyIta6zdTCZDEv79g9bVb1C2/17g2iLJWlcMttXVrMtztIleKX1FOByCrlMDAzppmRoVCgXs7e1jZ2cH3Ni8DNfUOhzjAbx2zePV4AzDG96Ht8IC+Mk1CLNhCB83sRiMIhgMsr9K0xiGwaCRVnVdRzabBecvnMKnncAbqcDh34OwlMeqcoCX41H0z6XhXt3HpFyCzzjBirINcSMEg6SiyagJRfpmzww93jEyYyNwCTyGnEMYHnLA7XyH/oF+DDgGMDg8CF5wwUnm1B8IIJfLEUODGfQS9gxpjXv26B6eP7nP0HcDun7x9AFDH+OHeHz3DsaIMU2nqipru8d0DinTtP8AK4nLydAEBEUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Plane object&quot;
+        title=&quot;&quot;
+        src=&quot;/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-fb8a0.png&quot;
+        srcset=&quot;/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-1a291.png 148w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-2bc4a.png 295w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-fb8a0.png 590w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-526de.png 885w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-fa2eb.png 1180w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-08f6a.png 1770w,
+/static/06-plane-object-513caa40a31d0b521f9f2f9bdd6fba63-ef9ea.png 1920w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Position: (0, 0, 0)&lt;/li&gt;
+&lt;li&gt;Scale: (10, 10, 10)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;also, we’ll keep the cube from part 1 as a reference and set its position to: (0, 0.5, 3)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Try it out&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;press play in Unity, put on your Rift headset and grab your Touch controllers&lt;/li&gt;
+&lt;li&gt;you should be able to move and see your hands, and your fingers should move when you squeeze the grip, squeeze the trigger, or touch buttons on the controllers&lt;/li&gt;
+&lt;li&gt;you can use the thumbsticks to move around the scene and rotate your view&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-ef9ea.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.645833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACkklEQVQoz12R2U9TURCH+6eZmEiQB2N8MfqkicREQkJdoyBEjIoStMoSJCrQIiBhCwhtobVAF6ALO6KCtGwKuaULvW3ppf08tyxGJ/kyM+fM/M6cczRfhk3YLGZGrUOM2SxYRa6ujTtG8bnHGXe58PqmsvEJngmmvJNM+9zMTnmY8XmY8kyK9Uk0+oFJDIKmPhfve+y86x4VjNHQOUJ9h5W6tmHq2i3UtpqpaTFSbRgUDGR53dxPjfBv9J9F3IfuQxcaZxDGtsG2BdZ1MPszDC6n6F9K0LsQo2s2TIdPos29w8eJXxicG+gdazTbA+iz+EUeoMUZwDCyhGYtpeAXrO4rrCQVluMK3+UU32L7LEYSzO/KLIZlFnZjzElR5oN7WT8nRfBuSXiOcAvsP/xoUgcHHKOkDzhIpwVqrnBsu9E4ETmBnEiyI+3yc22TZf8G+4qCkkmTEvX7gp1gEA3/WSaTOYlD4SjTc0sMjPhwza7SPTTOzTIdRaU6nugaiYsDjpqyLhIOo1EFjlGnUy0t9j/1mrhxq5TC2w+pft+Gc3aFTpMT7cOXaEtfUVHdjBxPokql04eCYVXwZLIjMdX6hx1cvqYlv/AeTa2dtPYO4Zj+QafRnhUsKqmislavdv1zu/DxhOkjse1gmEfPa8g9d5HTZy9QUl5Jn9HCsHMGm/sr7f02tMWV3CmroqTiLUb7Iuu/QyRTh+8dCoX+TtjWbeTSlQJOnc4lJ+88j59VsfzTT0oUJ5IpVjd26DU7KLhfxfUHdeSXNHK12EB+2UfK6018XwsiyzE0kiSRSCSob/jAmZw8bhQUMmg0EYvtiQI5e6pKNBphfWMTl3eRniEPuiYz2qct3H3RjsO7hCR+OBAI8Acdauo1TSMnLwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;left hand&quot;
+        title=&quot;&quot;
+        src=&quot;/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-fb8a0.png&quot;
+        srcset=&quot;/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-1a291.png 148w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-2bc4a.png 295w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-fb8a0.png 590w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-526de.png 885w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-fa2eb.png 1180w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-08f6a.png 1770w,
+/static/07-left-hand-adfbc09c87c139446ba3cb72ab9e80af-ef9ea.png 1920w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-ef9ea.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.645833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACPklEQVQoz4WR+0uTYRTH9xcG9Us/FQQGgSRphGRhiFgEXjJbXnAMS8ccS53YfHfV2drFXdxIpeGczkvT6e7Tzd0+vXsnBaZ04MNzzsP3+Z7zcGQWowGrycCyxYTNasZiFLCYBBz2FXyrTpwOJ17fGj6PS6xdjVNkzbtKwOch6PcS8Huk2udxI5tb8TG74kdr9aI2ulAJDlSLDia/2pmYt6GYXRJZZlxrZkxjYnTawIi6jsBHlV7Kh1WLyKf0fJiYRRYFIjXYqsDPC1g/h0AWvMkqrngJR6yIbS+HOZLBsJVEHzplYTOO7scRc8EYM4Ffl8TQusPIiuUShUvO61RKnFXKEqlikXj+jEShKFLgKJ/nIJNlL51hP5sjKuY7IlupDKFkGn90HxnXRa0mHSeJLDZvCN9mlAWLm175JD3vlKhnDP9o65FOp5HVxIurVC9FsZM0ltVNvge3GZ8WaHnZx6P2t0zNGAlHdjmOn0q6arX617DRpHZlwEZ9GE9hdW/gCIZRqPW0dQ7wrGsQ7YKZoRElik/Tkq5cqUiD/tfw4DiBYA/yzR9ibGqep539dHQP0NrRQ59cSevzbmwO7583yVTq+i83DGtclMrsHBzj3dimf1RNU9sbmjsGedDShXxCx2fNHA+fdCIsOSXTfD53w1Ku7kgkvHuIwb6OSr/G6/eTyJVaNDqB+02PuXOvGVcwRCgcQZZMJrmJRJ1EQsrPxO6F8zz5XIZcNkMksoPmi472F6+4dfsuPb1yhoYV/AbStQG5mIQHlwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;right hand&quot;
+        title=&quot;&quot;
+        src=&quot;/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-fb8a0.png&quot;
+        srcset=&quot;/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-1a291.png 148w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-2bc4a.png 295w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-fb8a0.png 590w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-526de.png 885w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-fa2eb.png 1180w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-08f6a.png 1770w,
+/static/08-right-hand-e0e1c3c76532470ee6d937fac91279a2-ef9ea.png 1920w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;We have now added basic Oculus Touch controller support to our scene including navigation and tracked hands.&lt;/p&gt;
+&lt;p&gt;Stay tuned, next time we will add the ability to grab an object with our hands.&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/documentation/unity/latest/concepts/unity-utilities-overview/&quot;&gt;Oculus Utilities for Unity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/documentation/avatarsdk/latest/concepts/avatars-gsg-unity/&quot;&gt;Avatar Unity Developer Guide - Rift&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.oculus.com/blog/-avatar-locomotion-sample/&quot;&gt;Getting started with Oculus Touch and Avatar SDK in Unity - The Ghost Howls&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://skarredghost.com/2017/01/03/getting-started-with-oculus-touch-and-avatar-sdk-in-unity/&quot;&gt;Oculus Touch and Finger Stuff – Part 1 | RGB Schemes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://forums.oculusvr.com/developer/discussion/49444/attaching-local-avatar-to-player-controller-in-unity&quot;&gt;Attaching Local Avatar to Player Controller in Unity — Oculus Forums&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Rift in Unity Part 1: Enable VR Support]]></title><description><![CDATA[As I’m developing a VR game in  Unity  for the Progressive Game Jam at  Square One Clubs , I want to share some of the things I’m learning…]]></description><link>https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</link><guid isPermaLink="false">https://www.mikeimmersed.com//blog/rift-in-unity-1-enable-vr-support/</guid><pubDate>Tue, 28 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;As I’m developing a VR game in &lt;a href=&quot;https://unity3d.com/&quot;&gt;Unity&lt;/a&gt; for the Progressive Game Jam at &lt;a href=&quot;http://www.squareoneclubs.com/&quot;&gt;Square One Clubs&lt;/a&gt;, I want to share some of the things I’m learning along the way. For now, I’ll be focusing on &lt;a href=&quot;https://www.oculus.com/rift/&quot;&gt;Oculus Rift&lt;/a&gt; support. But I plan to add support and info for other headsets later.&lt;/p&gt;
 &lt;p&gt;If you want to follow along, you’ll need Oculus Rift + Touch and a computer that meets the Rift system requirements.&lt;/p&gt;
 &lt;h2&gt;Let’s get started&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://unity3d.com/get-unity&quot;&gt;Install or update&lt;/a&gt; to the latest version of Unity. I’m using Unity 2018.2.5f1.&lt;/p&gt;
